@@ -22,6 +22,7 @@
         .kotak{
             width: 500px;
             height: 250px;
+            transition: all 5s;
             background: rgba(0, 0, 0, 0.082);
             border-radius: 10px;
             position: absolute;
@@ -101,7 +102,17 @@
         </div>
     </div>
     <script>
+         setInterval(()=>{
+            let x = Math.floor(Math.random()*70);
+            let y = Math.floor(Math.random()*70);
 
+            x = x < 10 ? 10 : x;
+            y = y < 10 ? 10 : y;
+
+            S(".kotak").style.left = `${x}%`;
+            S(".kotak").style.top = `${y}%`;
+        },5000)
+        
         setInterval(()=>{
             let jam = S("#jam h2");
             let min = S("#min h2");
