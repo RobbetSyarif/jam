@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 100%;
+            height: 100vh;
+            background: rgb(0, 171, 214);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(img/bg.jpg);
+            background-size: cover;
+        }
+        .kotak{
+            width: 500px;
+            height: 250px;
+            background: rgba(0, 0, 0, 0.082);
+            border-radius: 10px;
+            position: absolute;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2),
+                        0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+        }
+        .card{
+            width: 100px;
+            height: 120px;
+            background: rgb(197, 79, 0);
+            display: flex;
+            flex-direction: column;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2),
+                        0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+                        transition: .5s;
+        }
+        .card:hover{
+            transform: scale(1.1);
+        }
+        .cn{
+            flex: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(255, 255, 255);
+        }
+        .cn h2{
+            font-family: sans-serif;
+            font-size: 50px;
+        }
+        .judul{
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(204, 0, 136);
+        }
+        .judul h3{
+            font-family: sans-serif;
+            color: rgb(255, 255, 255);
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="kotak">
+            <div class="card">
+                <div class="cn" id="jam">
+                    <h2>00</h2>
+                </div>
+                <div class="judul">
+                    <h3>Jam</h3>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cn" id="min">
+                    <h2>00</h2>
+                </div>
+                <div class="judul">
+                    <h3>Menit</h3>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cn" id="sec">
+                    <h2>00</h2>
+                </div>
+                <div class="judul">
+                    <h3>Detik</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        setInterval(()=>{
+            let jam = S("#jam h2");
+            let min = S("#min h2");
+            let sec = S("#sec h2");
+            let wk = new Date();
+            let jm = wk.getHours();
+            let mn = wk.getMinutes();
+            let sc = wk.getSeconds();
+                     
+            jm = jm < 10 ? `0${jm}`: jm;
+            mn = mn < 10 ? `0${mn}`: mn;
+            sc = sc < 10 ? `0${sc}`: sc;
+            
+            jam.textContent = jm;
+            min.textContent = mn;
+            sec.textContent = sc;
+        },1000)
+
+        function S(s) {
+            return document.querySelector(s)
+        }
+    </script>
+</body>
+</html>
